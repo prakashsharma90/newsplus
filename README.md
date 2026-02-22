@@ -1,20 +1,37 @@
-# NewsPulse
+# NewsPulse – Smart News Aggregator App
 
-This repository contains the planning documentation for **NewsPulse**, a smart news aggregator app focused on real-time updates, personalization, and reliable notifications.
+Production-ready full-stack foundation aligned to PRD/TRD/UI requirements.
 
-## Documents
-- [Product Requirement Document](docs/PRD.md)
-- [Technical Requirement Document](docs/TRD.md)
-- [UX, Scalability, and Delivery Plan](docs/UX-and-Roadmap.md)
+## What is included
+- Flutter mobile app (`mobile/`) with onboarding, home/categories/search/saved/profile tabs, and detail flow.
+- Node.js + Express backend (`backend/`) for ingestion, normalization, dedupe, news APIs, and personalized FCM notifications.
+- Firestore security rules and Firebase config stubs.
+- Implementation, setup, deployment, and scalability guide.
 
-## Scope (MVP)
-- Multi-source news aggregation
-- Category and region feeds
-- Personalized push notifications
-- Search, save, and share flows
+## Quick Start
+### 1) Backend
+```bash
+cd backend
+cp .env.example .env
+npm install
+npm run dev
+```
 
-## Proposed Stack
-- Mobile: Flutter (or React Native)
-- Backend: Node.js + Express (or Firebase)
-- Database: Firestore (or MongoDB)
-- Notifications: Firebase Cloud Messaging (FCM)
+### 2) Mobile
+```bash
+cd mobile
+flutter pub get
+flutter run --dart-define=API_BASE_URL=http://localhost:8080/api
+```
+
+## Docs
+- PRD: `docs/PRD.md`
+- TRD: `docs/TRD.md`
+- UX/Roadmap: `docs/UX-and-Roadmap.md`
+- Implementation & deployment: `docs/IMPLEMENTATION.md`
+
+## Security + operations
+- API keys remain backend-only via env vars.
+- HTTPS-first backend deployment.
+- Firestore access controlled by `firestore.rules`.
+- Rate-limited Express APIs and validated write payloads.
